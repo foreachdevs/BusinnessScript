@@ -1,4 +1,4 @@
-#Foreach Devs Admin System
+# Foreach Devs Admin System
 
 ![alt text](https://i.hizliresim.com/XxT5Om.jpg)
 
@@ -8,4 +8,5 @@
 
 Bizi destekleyin.
 ![alt text](https://blog.logomyway.com/wp-content/uploads/2020/12/discord-mascot.png)
+https://discord.gg/JbhkUHyk
 
