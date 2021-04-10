@@ -1,7 +1,11 @@
 <?php
+ob_start();
+session_start();
+if (isset($_SESSION['id']))
+{
+    header('location:home.php');
 
-
-
+}
 if (isset($_POST['girisyap']))
 {
     //echo "Hello World !";
@@ -33,6 +37,7 @@ if (isset($_POST['girisyap']))
         <p class="text-light bg-red pl-1">Kullanıcı adınızı ve ya şifrenizi kontrol edin !</p>
         <?php
     }
+
 }
 ?>
 <!-- *********************************************** -->
