@@ -6,10 +6,11 @@
             $sorgu = $conn->prepare("SELECT imgpath FROM administrators WHERE id = ?");
             $sorgu->bindParam(1, $kimlik, PDO::PARAM_INT);
             $sorgu->execute();
-
             $cikti = $sorgu->fetch(PDO::FETCH_ASSOC);
             echo $cikti['imgpath'];?>
                         " alt="profile"/>
+            <?php echo $kimlik;?>
+
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
             <a class="dropdown-item" href="settings.php">

@@ -22,9 +22,15 @@
             </div>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="clients.php">
+                <i class="ti-user menu-icon"></i>
+                <span class="menu-title">Kayıtlı Müşteriler</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="donates.php">
                 <i class="ti-credit-card menu-icon"></i>
-                <span class="menu-title">Bağışlar</span>
+                <span class="menu-title">Siparişler</span>
             </a>
         </li>
         <li class="nav-item">

@@ -6,7 +6,7 @@ if (isset($_SESSION['id']))
 {
     //echo "Pass Dogru !";
     $kimlik = $_SESSION['id'];
-    $sql = $conn->prepare("SELECT * FROM bagislar");
+    $sql = $conn->prepare("SELECT * FROM administrators");
     $sql->execute();
     $tablocek=$sql-> fetchAll(PDO::FETCH_OBJ);//object olarak verilerimizi çekiyoruz.
 }

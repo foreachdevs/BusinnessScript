@@ -6,45 +6,45 @@ if (isset($_SESSION['id']))
     header('location:home.php');
 
 }
-if (isset($_POST['girisyap']))
+if($_POST)// Post İşlemi varmı kontrol ediyoruz.
 {
-    //echo "Hello World !";
     include ('engine/config.php');
 
     $user = $_POST['user'];
     $pass = $_POST['pass'];
-
     $user_sanitize = filter_var($user, FILTER_SANITIZE_STRING);
     $pass_sanitize = filter_var($pass, FILTER_SANITIZE_STRING);
     $pass_enc =  md5($pass_sanitize);
 
 
-    $sth = $conn->query("Select * from administrators where usn = '$user_sanitize' and pass ='$pass_enc' ");
-
-    $count = $sth->rowcount();
-    $row = $sth->fetch();
-
-    if ($count > 0)
+    if(!empty($user_sanitize) || !empty($pass_enc))// Eğer Kullanıcı veya Şifre boş değilse buraya gir dedik
     {
-        session_start();
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['id'] = true;
-        header('location:home.php');
+        $sorgu=$conn->prepare("SELECT * FROM administrators WHERE usn=? and pass=?");// sql yazarak verilerin doğruluğunu kontrol ediyoruz.
+        $sorgu->execute(array($user_sanitize,$pass_enc));//Kontrol edilecek olan değişkenleri yazdık
+        $islem=$sorgu->fetch();// Burada sorguyu parcalayarak girilen bilgilerin karşılığı varmı dedik
+
+        if($islem)// Karşığılı varsa buraya gir dedik
+        {
+            $_SESSION['id'] = $islem['id'];// Giriş yaptığımız kullanici adımızı SEssion atadık
+
+
+            header("Location:home");//Yönlendirmemizi yapıyoruz.
+        }
+        else//Eğer girilen bilgiler eşleşmiyorsa
+        {
+            ?>
+            <p class="text-light bg-red pl-1">Kullanıcı adınızı ve ya şifrenizi kontrol edin !</p>
+        <?php		}
     }
-    else
+    else//Eğer alanlar boş ise ekranda yazıcak olan kısım.
     {
         ?>
-        <p class="text-light bg-red pl-1">Kullanıcı adınızı ve ya şifrenizi kontrol edin !</p>
+        <p class="text-light bg-red pl-1">Boş alan bırakmayın !</p>
         <?php
     }
-
 }
 ?>
-<!-- *********************************************** -->
-<!--                                                 -->
-<!--  ROYAL UI Powered By Foreach Devs UI Element    -->
-<!--             by w0fly                            -->
-<!-- *********************************************** -->
+
 
 <!DOCTYPE html>
 <html lang="tr">

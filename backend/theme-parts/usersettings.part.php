@@ -45,26 +45,24 @@ if (isset($_POST['kaydet'])) {
                     <label for="exampleInputName1">Kullanıcı Adı</label>
                     <input value="<?php foreach ($row as $item) {
                         echo ($item["usn"]);
-                    } ?>" type="text" name="user" class="form-control" id="exampleInputName1" placeholder="Kullanıcı Adı">
+                    } ?>" type="text" name="user" class="form-control" id="exampleInputName1" placeholder="Kullanıcı Adı" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail3">E-Posta Adresi</label>
                     <input value="<?php foreach ($row as $item) {
                         echo ($item["email"]);
-                    } ?>" type="email" name="mail" class="form-control" id="exampleInputEmail3" placeholder="E-Posta">
+                    } ?>" type="email" name="mail" class="form-control" id="exampleInputEmail3" placeholder="E-Posta" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword4">Şifre</label>
-                    <input value="<?php foreach ($row as $item) {
-                        echo ($item["pass"]);
-                    } ?>" type="password" name="pwd" class="form-control" id="exampleInputPassword4" placeholder="Şifre">
+                    <input type="password" name="pwd" class="form-control" id="exampleInputPassword4" placeholder="Şifre" required>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputCity1">Avatar URL</label>
                     <input value="<?php foreach ($row as $item) {
                         echo ($item["imgpath"]);
-                    } ?>" type="text" name="avatar" class="form-control" id="exampleInputCity1" placeholder="Avatar URL">
+                    } ?>" type="text" name="avatar" class="form-control" id="exampleInputCity1" placeholder="Avatar URL" required>
                 </div>
 
                 <button type="submit" name="kaydet" class="btn btn-primary mr-2">Kaydet</button>
